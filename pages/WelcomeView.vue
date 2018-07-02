@@ -1,34 +1,62 @@
 <template>
-  <v-jumbotron
-    height="60vh"
-    :gradient="gradient"
-    dark
-    src="/static/priest_s.jpeg"
-  >
-    <v-container fill-height>
-      <v-layout align-center>
-        <v-flex text-xs-center>
-          <p class="title mx-0s" @click="changing">
-          Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future
-          Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future
-          Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future
-          </p>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-jumbotron>
-</template>
+  <v-layout>
+  <v-flex xs12 sm6 offset-sm3>
+       <v-card>
+        <v-container
+          fluid
+          grid-list-md
+        >
+          <v-layout row wrap>
+            <v-flex
+              v-for="card in cards"
+              v-bind="{ [`xs${card.flex}`]: true }"
+              :key="card.title"
+            >
+              <v-card>
+                <v-card-media
+                  :src="card.src"
+                  height="50vh"
+                  v-ripple
+                >
+                  <v-container
+                    fill-height
+                    fluid
+                    pa-2
+                  >
+                    <v-layout fill-height>
+                      <v-flex xs12 align-end flexbox>
+                        <span class="headline white--text font-weight-bold" v-text="card.title"></span>
+                      </v-flex>
+                    </v-layout>
+                  </v-container>
+                </v-card-media>
 
+                <v-card-title primary-title>
+                  <div>
+                    <div v-text="card.text"></div>
+                  </div>
+                </v-card-title>
+
+                <v-card-actions>
+                  <v-btn flat color="indigo">Продолжить</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card>
+    </v-flex>
+  </v-layout>
+</template>
 
 <script>
   export default {
     data: () => ({
-      gradient: 'to top, rgba(197,202,233, 1) 30%, rgba(197,202,233, 0) 100%'
-    }),
-    methods: {
-      changing: function() {
-        this.gradient = 'to top, rgba(104,107,103, 1) 0%, rgba(104,107,103, 0) 100%'
-      }
-    }
+      cards: [
+        { title: 'Хочу крестить ребенка', src: '/static/baby.jpg', text: 'могу ли я крестить его? в любое ли время это возможно? как подготовить себя и ребенка к крещению? ...', flex: 12 },
+        { title: 'Просят быть крестным', src: '/static/parents.jpg', text: 'могу ли я быть крестным? что я должен делать во время крещения? как я должен буду учавствовать в жизни крестника? ...', flex: 12 },
+        { title: 'Хочу креститься', src: '/static/cross.jpeg', text: 'крестят ли меня, если я попрошу? нужно ли мне креститься? что я должен буду делать, крестившись? ...', flex: 12 }
+      ]
+    })
   }
 </script>

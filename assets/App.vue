@@ -27,17 +27,45 @@
     </v-navigation-drawer>
     <v-toolbar fixed app :clipped-left="clipped" class="transparent">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-toolbar-title v-text="title" class="subheading"></v-toolbar-title>
     </v-toolbar>
     <v-content>
         <v-slide-y-transition mode="out-in">
           <router-view></router-view>
         </v-slide-y-transition>
     </v-content>
-    <v-footer :fixed="fixed" app class="indigo accent-1">
-      <span>&copy; 2017</span>
-    </v-footer>
+
+    <v-footer
+    height="auto"
+    color="primary lighten-1"
+  >
+    <v-layout
+      justify-center
+      row
+      wrap
+    >
+      <v-btn
+        v-for="link in links"
+        :key="link"
+        color="white"
+        flat
+        round
+      >
+        {{ link }}
+      </v-btn>
+      <v-flex
+        primary
+        lighten-2
+        py-3
+        text-xs-center
+        white--text
+        xs12
+      >
+        &copy;2018 — иерей <strong>Александр Бартов</strong>
+      </v-flex>
+    </v-layout>
+  </v-footer>
   </v-app>
 </template>
 
@@ -55,6 +83,9 @@
         items: [
           { icon: 'home', title: 'Главная', to: '/' },
           { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+        ],
+        links: [
+          'поддержать проект'
         ],
         miniVariant: false,
         right: true,
