@@ -1,2 +1,9 @@
 User-agent: *
 Disallow:
+
+User-agent: Yandex
+Disallow: /*/*.*
+Allow: /assets/*.html
+
+Sitemap: https://alekspriest.ru/sitemap.xml
+Host: https://alekspriest.ru
