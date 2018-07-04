@@ -31,18 +31,53 @@
 
 
 
-      <v-flex xs8 offset-xs2>
-        <v-btn
-          v-for="link in links"
-          :key="link"
-          color="primary lighten-1"
-          flat
-          round
-        >
-          {{ link }}
-        </v-btn>
+      <v-flex xs8 offset-xs2 mt-5>
+      <v-card color="primary lighten-1">
+
+          <v-dialog
+            v-model="dialog"
+            width="100%"
+          >
+            <v-btn
+              v-for="link in links"
+              :key="link"
+              color="white"
+              slot="activator"
+              flat
+              round
+            >
+              {{ link }}
+            </v-btn>
+
+            <v-card>
+              <v-card-title
+                class="headline grey lighten-2"
+                primary-title
+              >
+                Поддержка сайта
+              </v-card-title>
+
+              <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=buyer&targets=&targets-hint=%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20%3C%20%D0%B2%D0%B0%D1%88%D0%B5%20%D0%B8%D0%BC%D1%8F%20%3E&default-sum=100&button-text=14&payment-type-choice=on&mobile-payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410012494405212" width="100%" height="231" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+
+
+              <v-divider></v-divider>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="primary"
+                  flat
+                  @click="dialog = false"
+                >
+                  закрыть
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-card>
       </v-flex>
     </v-navigation-drawer>
+
     <v-toolbar fixed app :clipped-left="clipped" class="transparent">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-spacer></v-spacer>
@@ -63,15 +98,46 @@
       row
       wrap
     >
-      <v-btn
-        v-for="link in links"
-        :key="link"
-        color="white"
-        flat
-        round
-      >
-        {{ link }}
-      </v-btn>
+      <v-dialog
+            v-model="dialog"
+            width="100%"
+          >
+            <v-btn
+              v-for="link in links"
+              :key="link"
+              color="white"
+              slot="activator"
+              flat
+              round
+            >
+              {{ link }}
+            </v-btn>
+
+            <v-card>
+              <v-card-title
+                class="headline grey lighten-2"
+                primary-title
+              >
+                Поддержка сайта
+              </v-card-title>
+
+              <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=buyer&targets=&targets-hint=%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20%3C%20%D0%B2%D0%B0%D1%88%D0%B5%20%D0%B8%D0%BC%D1%8F%20%3E&default-sum=100&button-text=14&payment-type-choice=on&mobile-payment-type-choice=on&hint=&successURL=&quickpay=shop&account=410012494405212" width="100%" height="231" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+
+
+              <v-divider></v-divider>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="primary"
+                  flat
+                  @click="dialog = false"
+                >
+                  закрыть
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
       <v-flex
         primary
         lighten-2
@@ -97,6 +163,7 @@
       return {
         clipped: false,
         drawer: false,
+        dialog: false,
         fixed: false,
         items: [
           { icon: 'home', title: 'Главная', to: '/' },
