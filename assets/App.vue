@@ -24,6 +24,24 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+      
+      <v-divider></v-divider>
+      <v-spacer></v-spacer>
+      <v-divider></v-divider>
+
+
+
+      <v-flex xs8 offset-xs2>
+        <v-btn
+          v-for="link in links"
+          :key="link"
+          color="primary lighten-1"
+          flat
+          round
+        >
+          {{ link }}
+        </v-btn>
+      </v-flex>
     </v-navigation-drawer>
     <v-toolbar fixed app :clipped-left="clipped" class="transparent">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
