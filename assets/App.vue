@@ -9,32 +9,15 @@
       app
     >
       <v-list>
-        <v-list-tile 
-          router
-          :to="item.to"
-          :key="i"
-          v-for="(item, i) in items"
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-
-      <v-list>
-      <v-list-tile>
+      <v-list-tile router :to="home">
         <v-list-tile-action>
           <v-icon>home</v-icon>
         </v-list-tile-action>
-        <v-list-tile-title>Главная</v-list-tile-title>
+        <v-list-tile-title >Главная</v-list-tile-title>
       </v-list-tile>
 
       <v-list-group
-        prepend-icon="account_circle"
+        prepend-icon="flare"
       >
         <v-list-tile slot="activator">
           <v-list-tile-title>Таинства Церкви</v-list-tile-title>
@@ -49,13 +32,15 @@
           </v-list-tile>
 
           <v-list-tile
-            v-for="(admin, i) in admins"
+            v-for="(baptiz, i) in baptizes"
             :key="i"
             @click=""
+            router 
+            :to="baptiz[2]"
           >
-            <v-list-tile-title v-text="admin[0]"></v-list-tile-title>
+            <v-list-tile-title v-text="baptiz[0]" ></v-list-tile-title>
             <v-list-tile-action>
-              <v-icon v-text="admin[1]"></v-icon>
+              <v-icon v-text="baptiz[1]"></v-icon>
             </v-list-tile-action>
           </v-list-tile>
         </v-list-group>
@@ -69,13 +54,13 @@
           </v-list-tile>
 
           <v-list-tile
-            v-for="(crud, i) in cruds"
+            v-for="(testimonial, i) in testimonials"
             :key="i"
             @click=""
           >
-            <v-list-tile-title v-text="crud[0]"></v-list-tile-title>
+            <v-list-tile-title v-text="testimonial[0]"></v-list-tile-title>
             <v-list-tile-action>
-              <v-icon v-text="crud[1]"></v-icon>
+              <v-icon v-text="testimonial[1]"></v-icon>
             </v-list-tile-action>
           </v-list-tile>
         </v-list-group>
@@ -221,18 +206,15 @@
         drawer: false,
         dialog: false,
         fixed: false,
-        items: [
-          { icon: 'home', title: 'Главная', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
-        ],
         links: [
           'поддержать проект'
         ],
-        admins: [
-          ['Хочу крестить ребенка', 'people_outline'],
-          ['Просят быть крестным', 'settings']
+        home: '/',
+        baptizes: [
+          ['Хочу крестить ребенка', 'child_care', '/хочу_крестить_ребенка'],
+          ['Просят быть крестным', 'people', '/']
         ],
-        cruds: [
+        testimonials: [
           ['Create', 'add'],
           ['Read', 'insert_drive_file'],
           ['Update', 'update'],
