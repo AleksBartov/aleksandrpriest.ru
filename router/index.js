@@ -24,6 +24,11 @@ export function createRouter () {
       routes: [
         route('/', 'Welcome'),
         route('/хочу_крестить_ребенка', 'Baptizo'),
+        route('/просят_быть_крестным', 'AskToBeGodfather'),
+        route('/хочу_креститься', 'WantToBaptizo'),
+        route('/хочу_исповедаться', 'WantToTest'),
+        route('/боюсь_исповеди', 'AfraidOfTest'),
+        route('/ошибки_на_исповеди', 'TestMistakes'),
         // Global redirect for 404
         { path: '*', redirect: '/' }
       ]

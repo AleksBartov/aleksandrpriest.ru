@@ -57,6 +57,8 @@
             v-for="(testimonial, i) in testimonials"
             :key="i"
             @click=""
+            router 
+            :to="testimonial[2]"
           >
             <v-list-tile-title v-text="testimonial[0]"></v-list-tile-title>
             <v-list-tile-action>
@@ -119,7 +121,9 @@
       </v-flex>
     </v-navigation-drawer>
 
-    <v-toolbar fixed app :clipped-left="clipped" class="transparent">
+
+
+    <v-toolbar fixed app :clipped-left="clipped" class="indigo lighten-4">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-spacer></v-spacer>
       <v-toolbar-title v-text="title" class="subheading"></v-toolbar-title>
@@ -212,13 +216,13 @@
         home: '/',
         baptizes: [
           ['Хочу крестить ребенка', 'child_care', '/хочу_крестить_ребенка'],
-          ['Просят быть крестным', 'people', '/']
+          ['Просят быть крестным', 'people', '/просят_быть_крестным'],
+          ['Хочу креститься', 'add', '/хочу_креститься']
         ],
         testimonials: [
-          ['Create', 'add'],
-          ['Read', 'insert_drive_file'],
-          ['Update', 'update'],
-          ['Delete', 'delete']
+          ['Хочу исповедаться', 'add', '/хочу_исповедаться'],
+          ['Боюсь исповеди', 'add', '/боюсь_исповеди'],
+          ['Ошибки на исповеди', 'update', '/ошибки_на_исповеди']
         ],
         miniVariant: false,
         right: true,
