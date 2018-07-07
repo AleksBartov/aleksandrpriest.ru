@@ -79,7 +79,7 @@
           var v = this;
           setTimeout(function () {
             v.fonPage = false;
-        }, 6000);
+        }, 8000);
       }
     },
     mounted () {
