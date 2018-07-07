@@ -127,7 +127,7 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-spacer></v-spacer>
       <v-btn icon>
-        <Vuetify />
+        <Cross />
        </v-btn>
       <v-toolbar-title v-text="title" class="body-1 font-weight-thin"></v-toolbar-title>
     </v-toolbar>
@@ -196,6 +196,7 @@
       >
         &copy;2018 — иерей <strong>Александр Бартов</strong>
       </v-flex>
+      
     </v-layout>
   </v-footer>
   </v-app>

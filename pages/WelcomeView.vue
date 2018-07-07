@@ -1,5 +1,8 @@
 <template>
   <v-layout>
+  <div class="fon" v-if="fonPage">
+    <Vuetify />
+  </div>
   <v-flex xs12 sm8 offset-sm2>
        <v-card>
         <v-container
@@ -68,7 +71,29 @@
          to: '/хочу_креститься',
           text: 'крестят ли меня, если я попрошу? нужно ли мне креститься? что я должен буду делать, крестившись? ...',
            flex: 12 }
-      ]
-    })
+      ],
+      fonPage: true
+    }),
+    methods:{
+        sayHi() {
+          var v = this;
+          setTimeout(function () {
+            v.fonPage = false;
+        }, 6000);
+      }
+    },
+    mounted () {
+      this.sayHi()
+    }
   }
 </script>
+
+<style scoped>
+.fon {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #7986CB;
+}
+</style>

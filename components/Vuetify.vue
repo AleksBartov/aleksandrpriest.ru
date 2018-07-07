@@ -1,74 +1,25 @@
 <template>
 <svg
-   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 300 300"
-   height="300mm"
-   width="300mm">
+   viewBox="0 0 320 568"
+   height="100vh"
+   width="100vw"
+   >
   <defs
      id="defs2">
-    <linearGradient
-       osb:paint="solid"
-       id="linearGradient875">
-      <stop
-         id="stop873"
-         offset="0"
-         style="stop-color:#5c6bc0;stop-opacity:1;" />
-    </linearGradient>
+     <clipPath id="clipPath">
+      <path d="M145,110 V140 H115 V170 H145 V200 H55 V230 H145 V350 L115,335 V365 L145,380 V470 H175 V395 L205,410 V380 L175,365 V230 H265 V200 H175 V170 H205 V140 H175 V110z" />
+     </clipPath>
   </defs>
-  <metadata
-     id="metadata5">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g
-     transform="translate(0,3)"
-     id="layer1">
-    <path
-       id="path823"
-       d="m 148.16666,11.250002 v 275.166668 0"
-       style="fill:#5c6bc0;stroke:#5c6bc0;stroke-width:7.9375;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1" />
-    <path
-       id="path829"
-       d="m 132.29166,27.125003 h 31.75 v 0 0"
-       style="fill:#5c6bc0;stroke:#5c6bc0;stroke-width:7.9375;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1" />
-    <path
-       id="path831"
-       d="M 74.083332,53.583336 H 222.25 v 0"
-       style="fill:#5c6bc0;stroke:#5c6bc0;stroke-width:7.9375;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1" />
-    <path
-       id="path833"
-       d="m 132.29166,185.875 31.75,31.75 v 0"
-       style="fill:#5c6bc0;stroke:#5c6bc0;stroke-width:7.9375;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1" />
-    <path
-       id="path823-9"
-       d="m 147.63786,10.720837 v 275.166723 0"
-       style="fill:none;stroke:#1a237e;stroke-width:2.64583325;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       id="path829-5"
-       d="m 131.76277,26.595844 h 31.75018 v 0 0"
-       style="fill:none;stroke:#1a237e;stroke-width:2.64583325;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       id="path831-1"
-       d="M 73.554259,53.054179 H 221.72163 v 0"
-       style="fill:none;stroke:#1a237e;stroke-width:2.64583325;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       id="path833-4"
-       d="m 131.76277,185.3459 31.75018,31.75 v 0"
-       style="fill:none;stroke:#1a237e;stroke-width:2.64583325;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  </g>
+  <path d="M0,560 V2000 H1000 V560 Q 980 540, 960 560 T 920 560 T 880 560 T 840 560 T 800 560 T 760 560 T 720 560 T 680 560 T 640 560 T 600 560 T 560 560 T 520 560 T 480 560 T 440 560 T 400 560 T 360 560 T 320 560 T 280 560 T 240 560 T 200 560 T 160 560 T 120 560 T 80 560 T 40 560 T 0 560z" fill="indigo" clip-path="url(#clipPath)">
+    <animate 
+      attributeName="d"
+      values="M0,560 V2000 H1000 V560 Q 980 540, 960 560 T 920 560 T 880 560 T 840 560 T 800 560 T 760 560 T 720 560 T 680 560 T 640 560 T 600 560 T 560 560 T 520 560 T 480 560 T 440 560 T 400 560 T 360 560 T 320 560 T 280 560 T 240 560 T 200 560 T 160 560 T 120 560 T 80 560 T 40 560 T 0 560z;
+      M-500,0 V2000 H500 V0 Q 480 -20, 460 0 T 420 0 T 380 0 T 340 0 T 300 0 T 260 0 T 220 0 T 180 0 T 140 0 T 100 0 T 60 0 T 20 0 T -20 0 T -60 0 T -100 0 T -140 0 T -180 0 T -220 0 T -260 0 T -300 0 T -340 0 T -380 0 T -420 0 T -460 0 T -500 0z"
+      keyTimes="0; 1"
+      dur="6s"
+      fill="freeze"
+    />
+  </path>
 </svg>
 </template>
+
