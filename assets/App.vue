@@ -126,7 +126,10 @@
     <v-toolbar fixed app :clipped-left="clipped" class="indigo lighten-4">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-spacer></v-spacer>
-      <v-toolbar-title v-text="title" class="subheading"></v-toolbar-title>
+      <v-btn icon>
+        <Vuetify />
+       </v-btn>
+      <v-toolbar-title v-text="title" class="body-1 font-weight-thin"></v-toolbar-title>
     </v-toolbar>
     <v-content>
         <v-slide-y-transition mode="out-in">
@@ -215,14 +218,14 @@
         ],
         home: '/',
         baptizes: [
-          ['Хочу крестить ребенка', 'child_care', '/хочу_крестить_ребенка'],
-          ['Просят быть крестным', 'people', '/просят_быть_крестным'],
+          ['Хочу крестить ребенка', 'add', '/хочу_крестить_ребенка'],
+          ['Просят быть крестным', 'add', '/просят_быть_крестным'],
           ['Хочу креститься', 'add', '/хочу_креститься']
         ],
         testimonials: [
           ['Хочу исповедаться', 'add', '/хочу_исповедаться'],
           ['Боюсь исповеди', 'add', '/боюсь_исповеди'],
-          ['Ошибки на исповеди', 'update', '/ошибки_на_исповеди']
+          ['Ошибки на исповеди', 'add', '/ошибки_на_исповеди']
         ],
         miniVariant: false,
         right: true,

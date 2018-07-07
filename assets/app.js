@@ -3,6 +3,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
 import App from './App.vue'
 import Components from 'components/_index'
+import * as svgicon from 'vue-svgicon'
 
 import { createStore } from 'store/index'
 import { createRouter } from 'router/index'

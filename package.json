@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "node server",
+    "svg": "vsvg -s ./static -t ./icons",
     "start": "cross-env NODE_ENV=production node server",
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
@@ -28,6 +29,7 @@
     "vue": "^2.5.3",
     "vue-router": "^2.5.3",
     "vue-server-renderer": "^2.5.3",
+    "vue-svgicon": "^3.0.0-alpha.1",
     "vuetify": "^1.0.0",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.1.2"
