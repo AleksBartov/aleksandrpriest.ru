@@ -15,7 +15,7 @@
               <v-card>
                 <v-card-media
                   :src="card.src"
-                  height="50vh"
+                  height="40vh"
                   v-ripple
                 >
                   <v-container
@@ -24,8 +24,8 @@
                     pa-2
                   >
                     <v-layout fill-height>
-                      <v-flex xs12 align-end flexbox>
-                        <span class="russionFont" v-text="card.title"></span>
+                      <v-flex xs7 offset-xs5 offset-md2 offset-lg5>
+                        <span class="title font-weight-black light-blue--text" v-text="card.title"></span>
                       </v-flex>
                     </v-layout>
                   </v-container>
@@ -74,9 +74,4 @@
 </script>
 
 <style scoped>
-  .russionFont {
-    font-family: 'Ruslan Display', cursive;
-    color: #7986CB;
-    font-size: 2rem;
-  }
 </style>

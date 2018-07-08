@@ -1,66 +1,91 @@
 <template>
 <v-card>
-      <v-container
-        fluid
-        grid-list-lg
-      >
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card color="blue-grey darken-2" class="white--text">
-              <v-card-title primary-title>
-                <div class="headline">Unlimited music now</div>
-                <div>Listen to your favorite artists and albums whenever and wherever, online and offline.</div>
-              </v-card-title>
-              <v-card-actions>
-                <v-btn flat dark>Listen now</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-flex>
+  <v-card-title>
+    <div class="headline">Крещение детей</div>
+    <div>Чтобы лучше понять вас и дать оптимальный ответ, пожалуйста, выберите самый подходящий к вашему случаю вариант</div>
+  </v-card-title>
+<v-stepper v-model="e6" vertical>
+    <v-stepper-step :complete="e6 > 1" step="1">
+      Я крещу детей потому что я...
+    </v-stepper-step>
 
-          <v-flex xs12>
-            <v-card color="cyan darken-2" class="white--text">
-              <v-container fluid grid-list-lg>
-                <v-layout row>
-                  <v-flex xs7>
-                    <div>
-                      <div class="headline">Supermodel</div>
-                      <div>Foster the People</div>
-                    </div>
-                  </v-flex>
-                  <v-flex xs5>
-                    <v-card-media
-                      src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"
-                      height="125px"
-                      contain
-                    ></v-card-media>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-card>
-          </v-flex>
+    <v-stepper-content step="1">
+      <v-card color="grey lighten-1" class="mb-5" height="auto">
+        <v-container fluid>
+          <v-radio-group :mandatory="false">
+            <v-radio color="success" label="верую во Святую Троицу и хочу, чтоб мои дети также были в Церкви" value="radio-1"></v-radio>
+            <v-radio color="info" label="" value="radio-2"></v-radio>
+            <v-radio color="warning" label="" value="radio-3"></v-radio>
+            <v-radio color="error" label="" value="radio-4"></v-radio>                  
+          </v-radio-group>
+        </v-container>
+      </v-card>
+      <v-btn color="primary" @click="e6 = 2">Далее</v-btn>
+      <v-btn flat>Отмена</v-btn>
+    </v-stepper-content>
 
-          <v-flex xs12>
-            <v-card color="purple" class="white--text">
-              <v-container fluid grid-list-lg>
-                <v-layout row>
-                  <v-flex xs7>
-                    <div>
-                      <div class="headline">Halycon Days</div>
-                      <div>Ellie Goulding</div>
-                    </div>
-                  </v-flex>
-                  <v-flex xs5>
-                    <v-card-media
-                      src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
-                      height="125px"
-                      contain
-                    ></v-card-media>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card>
+    <v-stepper-step :complete="e6 > 2" step="2">{{question_2}}</v-stepper-step>
+
+    <v-stepper-content step="2">
+      <v-card color="grey lighten-1" class="mb-5" height="auto">
+        <v-container fluid>
+          <v-radio-group :mandatory="false">
+            <v-radio color="success" label="" value="radio-1"></v-radio>
+            <v-radio color="info" label="" value="radio-2"></v-radio>
+            <v-radio color="warning" label="" value="radio-3"></v-radio>
+            <v-radio color="error" label="" value="radio-4"></v-radio>                  
+          </v-radio-group>
+        </v-container>
+      </v-card>
+      <v-btn color="primary" @click="e6 = 3">Далее</v-btn>
+      <v-btn flat>Отмена</v-btn>
+    </v-stepper-content>
+
+    <v-stepper-step :complete="e6 > 3" step="3">{{question_3}}</v-stepper-step>
+
+    <v-stepper-content step="3">
+      <v-card color="grey lighten-1" class="mb-5" height="auto">
+        <v-container fluid>
+          <v-radio-group :mandatory="false">
+            <v-radio color="success" label="верую во Святую Троицу и хочу, чтоб мои дети также были в Церкви" value="radio-1"></v-radio>
+            <v-radio color="info" label="" value="radio-2"></v-radio>
+            <v-radio color="warning" label="" value="radio-3"></v-radio>
+            <v-radio color="error" label="" value="radio-4"></v-radio>                  
+          </v-radio-group>
+        </v-container>
+      </v-card>
+      <v-btn color="primary" @click="e6 = 4">Далее</v-btn>
+      <v-btn flat>Отмена</v-btn>
+    </v-stepper-content>
+
+    <v-stepper-step step="4">{{question_4}}</v-stepper-step>
+    <v-stepper-content step="4">
+      <v-card color="grey lighten-1" class="mb-5" height="auto">
+        <v-container fluid>
+          <v-radio-group :mandatory="false">
+            <v-radio color="success" label="верую во Святую Троицу и хочу, чтоб мои дети также были в Церкви" value="radio-1"></v-radio>
+            <v-radio color="info" label="" value="radio-2"></v-radio>
+            <v-radio color="warning" label="" value="radio-3"></v-radio>
+            <v-radio color="error" label="" value="radio-4"></v-radio>                  
+          </v-radio-group>
+        </v-container>
+      </v-card>
+      <v-btn color="primary" @click="e6 = 1">Далее</v-btn>
+      <v-btn flat>Отмена</v-btn>
+    </v-stepper-content>
+  </v-stepper>
+</v-card>
 </template>
+
+<script>
+  export default {
+    data () {
+      return {
+        e6: 1,
+        question_2: 'Вопрос номер два',
+        question_3: 'Вопрос номер три',
+        question_4: 'Заключительный вопрос'
+      }
+    }
+  }
+</script>
