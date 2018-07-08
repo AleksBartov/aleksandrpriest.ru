@@ -1,5 +1,11 @@
-<template>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
    viewBox="0 0 320 568"
    height="100vh"
    width="100vw"
@@ -7,7 +13,7 @@
   <defs
      id="defs2">
      <clipPath id="clipPath">
-      <path d="M160,110 Q145,110 145,125 V140 H130 Q115,140 115,155 Q115,170 130,170 H145 V200 H70 Q55,200 55,215 Q55,230 70,230 H145 V350 L115,335 V365 L145,380 V455 Q145,470 160,470 Q175,470 175,455 V395 L205,410 V380 L175,365 V230 H250 Q265,230 265,215 Q265,200 250,200 H175 V170 H190 Q205,170 205,155 Q205,140 190,140 H175 V125 Q175,110 160,110z" />
+      <path d="M160,110 Q145,110 145,125 V140 H100 Q115,140 115,155 V170 H145 V200 H55 V230 H145 V350 L115,335 V365 L145,380 V470 H175 V395 L205,410 V380 L175,365 V230 H265 V200 H175 V170 H205 V140 H175 V110z" />
      </clipPath>
   </defs>
   <path d="M0,560 V2000 H1000 V560 Q 980 540, 960 560 T 920 560 T 880 560 T 840 560 T 800 560 T 760 560 T 720 560 T 680 560 T 640 560 T 600 560 T 560 560 T 520 560 T 480 560 T 440 560 T 400 560 T 360 560 T 320 560 T 280 560 T 240 560 T 200 560 T 160 560 T 120 560 T 80 560 T 40 560 T 0 560z" fill="#9FA8DA" clip-path="url(#clipPath)">
@@ -21,5 +27,3 @@
     />
   </path>
 </svg>
-</template>
-

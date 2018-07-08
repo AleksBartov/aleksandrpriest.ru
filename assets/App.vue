@@ -1,5 +1,10 @@
 <template>
   <v-app light>
+    <transition name="fade">
+      <div class="fon indigo lighten-5" v-if="fonPage">
+        <Vuetify />
+      </div>
+    </transition>
     <v-navigation-drawer
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -214,6 +219,7 @@
         drawer: false,
         dialog: false,
         fixed: false,
+        fonPage: true,
         links: [
           'поддержать проект'
         ],
@@ -233,6 +239,35 @@
         rightDrawer: false,
         title: 'иерей Александр Бартов'
       }
+    },
+    methods:{
+        sayHi() {
+          var v = this;
+          setTimeout(function () {
+            v.fonPage = false;
+        }, 6000);
+      }
+    },
+    mounted() {
+      this.sayHi()
     }
   }
 </script>
+
+<style scoped>
+  .fon {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 3s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+</style>
