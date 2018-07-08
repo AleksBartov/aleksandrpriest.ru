@@ -25,7 +25,7 @@
                   >
                     <v-layout fill-height>
                       <v-flex xs12 align-end flexbox>
-                        <span class="headline white--text font-weight-bold" v-text="card.title"></span>
+                        <span class="russionFont" v-text="card.title"></span>
                       </v-flex>
                     </v-layout>
                   </v-container>
@@ -73,3 +73,10 @@
   }
 </script>
 
+<style scoped>
+  .russionFont {
+    font-family: 'Ruslan Display', cursive;
+    color: #7986CB;
+    font-size: 2rem;
+  }
+</style>
