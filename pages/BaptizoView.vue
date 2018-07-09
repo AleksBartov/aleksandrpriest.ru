@@ -12,10 +12,10 @@
     <v-stepper-content step="1">
       <v-card color="grey lighten-1" class="mb-5" height="auto">
         <v-container fluid>
-          <v-radio-group :mandatory="false">
-            <v-radio color="success" label="я человек верующий, регулярно посещаю богослужения и учавствую в святых Таинствах. Хочу, чтоб и мои дети были бы членами Церкви" value="radio-1"></v-radio>
+          <v-radio-group v-model="values">
+            <v-radio color="success" label="человек верующий, регулярно посещаю богослужения и учавствую в святых Таинствах. Хочу, чтоб и мои дети были членами Церкви" value="Выбрали ли вы крестных родителей ( по крайней мере, один крестный одного с крещаемым пола )"></v-radio>
             <v-divider class="mt-3 mb-3"></v-divider>
-            <v-radio color="info" label="я верю в Бога, считаю себя православным. В храм захожу довольно часто, но исповедуюсь и причащаюсь пару раз в году. Считаю, что, как крестили в детстве меня, так и я должен крестить своих детей, чтоб Господь хранил их" value="radio-2"></v-radio>
+            <v-radio color="info" label="верю в Бога, считаю себя православным. В храм захожу довольно часто, но исповедуюсь и причащаюсь пару раз в году. Считаю, что, как крестили в детстве меня, так и я должен крестить своих детей, чтоб Господь хранил их" value="radio-2"></v-radio>
             <v-divider class="mt-3 mb-3"></v-divider>
             <v-radio color="warning" label="в Бога я верю и Церковь для меня важна. Вхраме бываю редко. Не исповедывался давно. Поскольку жуву в России, считаю, что и вера должна быть русской, православной. По-традиции крещу и своих детей" value="radio-3"></v-radio>
             <v-divider class="mt-3 mb-3"></v-divider>
@@ -24,10 +24,9 @@
         </v-container>
       </v-card>
       <v-btn color="primary" @click="e6 = 2">Далее</v-btn>
-      <v-btn flat>Отмена</v-btn>
     </v-stepper-content>
 
-    <v-stepper-step :complete="e6 > 2" step="2">{{question_2}}</v-stepper-step>
+    <v-stepper-step :complete="e6 > 2" step="2">{{values}}</v-stepper-step>
 
     <v-stepper-content step="2">
       <v-card color="grey lighten-1" class="mb-5" height="auto">
@@ -41,7 +40,7 @@
         </v-container>
       </v-card>
       <v-btn color="primary" @click="e6 = 3">Далее</v-btn>
-      <v-btn flat>Отмена</v-btn>
+      <v-btn flat @click="e6 = 1">Отмена</v-btn>
     </v-stepper-content>
 
     <v-stepper-step :complete="e6 > 3" step="3">{{question_3}}</v-stepper-step>
@@ -58,7 +57,7 @@
         </v-container>
       </v-card>
       <v-btn color="primary" @click="e6 = 4">Далее</v-btn>
-      <v-btn flat>Отмена</v-btn>
+      <v-btn flat @click="e6 = 2">Отмена</v-btn>
     </v-stepper-content>
 
     <v-stepper-step step="4">{{question_4}}</v-stepper-step>
@@ -74,7 +73,7 @@
         </v-container>
       </v-card>
       <v-btn color="primary" @click="e6 = 1">Далее</v-btn>
-      <v-btn flat>Отмена</v-btn>
+      <v-btn flat @click="e6 = 3">Отмена</v-btn>
     </v-stepper-content>
   </v-stepper>
 </v-card>
@@ -85,6 +84,7 @@
     data () {
       return {
         e6: 1,
+        values: 'Выбрали ли вы крестных родителей ( по крайней мере, один крестный одного с крещаемым пола )',
         question_2: 'Вопрос номер два',
         question_3: 'Вопрос номер три',
         question_4: 'Заключительный вопрос'
