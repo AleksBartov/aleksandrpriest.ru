@@ -25,7 +25,7 @@
                   >
                     <v-layout fill-height>
                       <v-flex xs7 offset-xs5 offset-md2 offset-lg5>
-                        <span class="title font-weight-black light-blue--text" v-text="card.title"></span>
+                        <span class="title font-weight-light white--text" v-text="card.title"></span>
                       </v-flex>
                     </v-layout>
                   </v-container>
