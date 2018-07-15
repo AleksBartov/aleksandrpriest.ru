@@ -245,7 +245,7 @@
           var v = this;
           setTimeout(function () {
             v.fonPage = false;
-        }, 8000);
+        }, 7000);
       }
     },
     mounted() {

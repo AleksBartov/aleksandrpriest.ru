@@ -12,35 +12,26 @@
               v-bind="{ [`xs${card.flex}`]: true }"
               :key="card.title"
             >
-              <v-card>
-                <v-card-media
-                  :src="card.src"
-                  height="40vh"
-                  v-ripple
-                >
-                  <v-container
-                    fill-height
-                    fluid
-                    pa-2
+              <transition name="fade">
+                <v-card router :to="card.to" v-ripple>
+                  <v-card-media
+                    :src="card.src"
+                    height="120px"
                   >
-                    <v-layout fill-height>
-                      <v-flex xs7 offset-xs5 offset-md2 offset-lg5>
-                        <span class="title font-weight-light white--text" v-text="card.title"></span>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-card-media>
-
-                <v-card-title primary-title>
-                  <div>
-                    <div v-text="card.text"></div>
-                  </div>
-                </v-card-title>
-
-                <v-card-actions>
-                  <v-btn flat color="indigo" router :to="card.to">Продолжить</v-btn>
-                </v-card-actions>
-              </v-card>
+                    <v-container
+                      fill-height
+                      fluid
+                      pa-2
+                    >
+                      <v-layout fill-height>
+                        <v-flex>
+                          <span class="subheading font-weight-medium white--text" v-text="card.title"></span>
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card-media>
+                </v-card>
+              </transition>
             </v-flex>
           </v-layout>
         </v-container>
@@ -53,25 +44,52 @@
   export default {
     data: () => ({
       cards: [
-        { title: 'Хочу крестить ребенка',
-         src: '/static/baby.jpg',
-         to: '/хочу_крестить_ребенка',
-         text: 'могу ли я крестить его? в любое ли время это возможно? как подготовить себя и ребенка к крещению? ...',
-         flex: 12 },
-        { title: 'Просят быть крестным',
-         src: '/static/parents.jpg',
-         to: '/просят_быть_крестным',
-          text: 'могу ли я быть крестным? что я должен делать во время крещения? как я должен буду учавствовать в жизни крестника? ...',
-           flex: 12 },
-        { title: 'Хочу креститься',
+        { title: 'крещение ребенка',
          src: '/static/cross.jpeg',
-         to: '/хочу_креститься',
-          text: 'крестят ли меня, если я попрошу? нужно ли мне креститься? что я должен буду делать, крестившись? ...',
-           flex: 12 }
-      ]      
-    })    
+         to: '/хочу_крестить_ребенка',
+         flex: 6 },
+        { title: 'стать крестным',
+        src: '/static/cross.jpeg',
+        to: '/просят_быть_крестным',
+        flex: 6 },
+        { title: 'креститься',
+        src: '/static/cross.jpeg',
+        to: '/хочу_креститься',
+        flex: 12 },
+        { title: 'исповедаться',
+        src: '/static/cross.jpeg',
+        to: '/хочу_креститься',
+        flex: 6 },
+        { title: 'боюсь исповеди',
+        src: '/static/cross.jpeg',
+        to: '/хочу_креститься',
+        flex: 6 },
+        { title: 'неправильная исповедь',
+        src: '/static/cross.jpeg',
+        to: '/хочу_креститься',
+        flex: 12 }
+      ],
+      vision: false     
+    }),
+    methods:{
+        toShowLinks() {
+          var v = this;
+          setTimeout(function () {
+              v.vision = true;
+          }, 1000);
+      }
+    },
+    mounted() {
+      this.toShowLinks()
+    }   
   }
 </script>
 
 <style scoped>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 3s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 </style>

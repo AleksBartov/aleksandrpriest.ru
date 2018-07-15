@@ -7,50 +7,52 @@
 
 <v-stepper v-model="e6" vertical>
     <v-stepper-step :complete="e6 > 1" step="1">
-      Я крещу детей потому что я...
+      {{ questions[0] }}
     </v-stepper-step>
 
     <v-stepper-content step="1">
       <v-card color="grey lighten-1" class="mb-5" height="auto">
         <v-container fluid>
           <v-radio-group v-model="first">
-            <v-radio color="success" :label="firstQuestion.firstAnswer" :value="firstQuestion.secondQuestion1"></v-radio>
+            <v-radio color="success" :label="answers[0].coutry" :value="answers[0].coutry"></v-radio>
             <v-divider class="mt-3 mb-3"></v-divider>
-            <v-radio color="info" :label="firstQuestion.secondAnswer" :value="firstQuestion.secondQuestion2"></v-radio>
+            <v-radio color="info" :label="answers[1].coutry" :value="answers[1].coutry"></v-radio>
             <v-divider class="mt-3 mb-3"></v-divider>
-            <v-radio color="warning" :label="firstQuestion.thirdAnswer" :value="firstQuestion.secondQuestion3"></v-radio>
+            <v-radio color="warning" :label="answers[2].coutry" :value="answers[2].coutry"></v-radio>
           </v-radio-group>
         </v-container>
       </v-card>
       <v-btn color="primary" @click="e6 = 2">Далее</v-btn>
     </v-stepper-content>
 
-    <v-stepper-step :complete="e6 > 2" step="2">{{ selected }}</v-stepper-step>
+<v-stepper-step :complete="e6 > 2" step="2">{{ questions[1] }}</v-stepper-step>
 
     <v-stepper-content step="2">
       <v-card color="grey lighten-1" class="mb-5" height="auto">
         <v-container fluid>
           <v-radio-group v-model="second">
-            <v-radio color="success" :label="secondQuestionOne.firstAnswer" :value="secondQuestionOne.thirdQuestion1"></v-radio>
-            <v-radio color="info" :label="secondQuestionOne.secondAnswer" :value="secondQuestionOne.thirdQuestion2"></v-radio>
-            <v-radio color="warning" :label="secondQuestionOne.thirdAnswer" :value="secondQuestionOne.thirdQuestion3"></v-radio>
+            <v-radio color="success" :label="selectSities" :value="selectSities"></v-radio>
+            <v-divider class="mt-3 mb-3"></v-divider>
+            <v-radio color="info" :label="selectSitiesTwo" :value="selectSitiesTwo"></v-radio>
+            <v-divider class="mt-3 mb-3"></v-divider>
+            <v-radio color="warning" :label="selectSitiesThird" :value="selectSitiesThird"></v-radio>
           </v-radio-group>
         </v-container>
       </v-card>
       <v-btn color="primary" @click="e6 = 3">Далее</v-btn>
       <v-btn flat @click="e6 = 1">Отмена</v-btn>
     </v-stepper-content>
+    
 
-    <v-stepper-step :complete="e6 > 3" step="3">{{ selectedForThree }}</v-stepper-step>
+    <v-stepper-step :complete="e6 > 3" step="3">{{ questions[2] }}</v-stepper-step>
 
     <v-stepper-content step="3">
       <v-card color="grey lighten-1" class="mb-5" height="auto">
         <v-container fluid>
-          <v-radio-group v-model="values">
-            <v-radio color="success" label="верую во Святую Троицу и хочу, чтоб мои дети также были в Церкви" value="radio-1"></v-radio>
-            <v-radio color="info" label="" value="radio-2"></v-radio>
-            <v-radio color="warning" label="" value="radio-3"></v-radio>
-            <v-radio color="error" label="" value="radio-4"></v-radio>                  
+          <v-radio-group v-model="third">
+            <v-radio color="success" :label="selectWorks" :value="selectWorks"></v-radio>
+            <v-radio color="info" :label="selectWorksTwo" :value="selectWorksTwo"></v-radio>
+            <v-radio color="warning" :label="selectWorksThird" :value="selectWorksThird"></v-radio>
           </v-radio-group>
         </v-container>
       </v-card>
@@ -63,46 +65,84 @@
 </template>
 
 <script>
+
   export default {
     data () {
       return {
-        firstQuestion: {
-          firstAnswer: 'я хороший',
-          secondQuestion1: 'ты уверен?',
-          secondAnswer: 'я хуже первого',
-          secondQuestion2: 'почему ты так решил?',
-          thirdAnswer: 'я плохой',
-          secondQuestion3: 'кто тебе сказал такую глупость?',
-        },
-        secondQuestionOne: {
-          firstAnswer: 'Конечно!',
-          thirdQuestion1: 'может ты в прелести?',
-          secondAnswer: 'Не совсем',
-          thirdQuestion2: 'ну и как нам разобраться?',
-          thirdAnswer: 'нет, я вру сам себе',
-          thirdQuestion3: 'а ты спросил маму?'
-        },
-        secondQuestionTwo: {
-          firstAnswer: 'мне сказали близкие',
-          secondAnswer: 'я видел его и слышал',
-          thirdAnswer: 'я не хожу в храм, а он ходит'
-        },
-        secondQuestionThree: {
-          firstAnswer: 'жена',
-          secondAnswer: 'начальник',
-          thirdAnswer: 'совесть'
-        },
         e6: 1,
-        first: 'ты уверен?',
-        second: 'может ты в прелести?'
+        questions: ['из какой вы страны?', 'из какого вы города?', 'кем вы работаете?'],
+        answers: [{
+              coutry: 'Россия',
+              sity: ['Москва', 'Санкт-Петербург', 'Пермь'],
+              work: ['доктор', 'повар', 'дворник']
+            },
+            {
+              coutry: 'Украина',
+              sity: ['Киев', 'Донецк', 'Львов'],
+              work: ['продавец', 'менеджер', 'таксист']
+            },
+            {
+              coutry: 'Казахстан',
+              sity: ['Астана', 'Алма-Ата', 'что у них там еще есть'],
+              work: ['летчик', 'президент', 'безработный']
+            }
+        ],
+        first: 'Россия',
+        second: 'Москва',
+        third: 'доктор'
       }
     },
     computed: {
       selected: function() {
         return this.first
       },
-      selectedForThree: function() {
-        return this.second
+      selectSities: function() {
+        if (this.first === 'Россия') {
+          return this.answers[0].sity[0]
+        } else if (this.first === 'Украина') {
+          return this.answers[1].sity[0]
+        } 
+        return this.answers[2].sity[0]
+      },
+      selectSitiesTwo: function() {
+        if (this.first === 'Россия') {
+          return this.answers[0].sity[1]
+        } else if (this.first === 'Украина') {
+          return this.answers[1].sity[1]
+        } 
+        return this.answers[2].sity[1]
+      },
+      selectSitiesThird: function() {
+        if (this.first === 'Россия') {
+          return this.answers[0].sity[2]
+        } else if (this.first === 'Украина') {
+          return this.answers[1].sity[2]
+        } 
+        return this.answers[2].sity[2]
+      },
+      selectWorks: function() {
+        if (this.second === 'Москва') {
+          return this.answers[0].work[0]
+        } else if (this.second === 'Киев') {
+          return this.answers[1].work[0]
+        } 
+        return this.answers[2].work[0]
+      },
+      selectWorksTwo: function() {
+        if (this.second === 'Москва') {
+          return this.answers[0].work[1]
+        } else if (this.second === 'Киев') {
+          return this.answers[1].work[1]
+        } 
+        return this.answers[2].work[1]
+      },
+      selectWorksThird: function() {
+        if (this.second === 'Москва') {
+          return this.answers[0].work[2]
+        } else if (this.second === 'Киев') {
+          return this.answers[1].work[2]
+        } 
+        return this.answers[2].work[2]
       }
     }
   }

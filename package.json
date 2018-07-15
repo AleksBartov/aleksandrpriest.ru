@@ -15,6 +15,7 @@
     "npm": ">=4.0"
   },
   "dependencies": {
+    "animate.css": "^3.6.1",
     "babel-polyfill": "^6.23.0",
     "compression": "^1.6.2",
     "cors": "^2.8.4",
