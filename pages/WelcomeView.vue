@@ -25,7 +25,7 @@
                     >
                       <v-layout fill-height>
                         <v-flex>
-                          <span :class="card.textColor" v-text="card.title"></span>
+                          <h2 class="font-weight-medium white--text shadow">{{ card.title }}</h2>
                         </v-flex>
                       </v-layout>
                     </v-container>
@@ -47,7 +47,7 @@
         { title: 'крещение ребенка',
          src: '/static/cross.jpeg',
          to: '/хочу_крестить_ребенка',
-         textColor: 'font-weight-medium white--text text-right',
+         textColor: 'font-weight-medium white--text',
          flex: 6 },
         { title: 'стать крестным',
         src: '/static/1.jpeg',
@@ -57,7 +57,7 @@
         { title: 'креститься',
         src: '/static/4.jpg',
         to: '/хочу_креститься',
-        textColor: 'font-weight-medium white--text text-right',
+        textColor: 'font-weight-medium white--text',
         flex: 12 },
         { title: 'исповедаться',
         src: '/static/7.jpeg',
@@ -92,6 +92,11 @@
 </script>
 
 <style scoped>
+  
+  .shadow {
+    text-shadow: 3px 1px 1px rgba(37, 7, 7, 1);
+  }
+  
   .fade-enter-active, .fade-leave-active {
     transition: opacity 3s;
   }
