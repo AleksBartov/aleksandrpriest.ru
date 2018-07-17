@@ -25,7 +25,7 @@
                     >
                       <v-layout fill-height>
                         <v-flex>
-                          <span class="subheading font-weight-medium white--text" v-text="card.title"></span>
+                          <span :class="card.textColor" v-text="card.title"></span>
                         </v-flex>
                       </v-layout>
                     </v-container>
@@ -47,26 +47,32 @@
         { title: 'крещение ребенка',
          src: '/static/cross.jpeg',
          to: '/хочу_крестить_ребенка',
+         textColor: 'subheading font-weight-medium white--text',
          flex: 6 },
         { title: 'стать крестным',
         src: '/static/1.jpeg',
         to: '/просят_быть_крестным',
+        textColor: 'subheading font-weight-medium white--text',
         flex: 6 },
         { title: 'креститься',
         src: '/static/4.jpg',
         to: '/хочу_креститься',
+        textColor: 'subheading font-weight-medium green--text',
         flex: 12 },
         { title: 'исповедаться',
         src: '/static/7.jpeg',
         to: '/хочу_креститься',
+        textColor: 'subheading font-weight-medium red--text',
         flex: 6 },
         { title: 'боюсь исповеди',
         src: '/static/6.jpeg',
         to: '/хочу_креститься',
+        textColor: 'subheading font-weight-medium white--text',
         flex: 6 },
         { title: 'неправильная исповедь',
         src: '/static/5.jpeg',
         to: '/хочу_креститься',
+        textColor: 'subheading font-weight-medium white--text',
         flex: 12 }
       ],
       vision: false     

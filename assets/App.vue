@@ -1,10 +1,13 @@
 <template>
   <v-app light>
+
     <transition name="fade">
       <div class="fon indigo lighten-5" v-if="fonPage">
         <Vuetify />
       </div>
     </transition>
+
+
     <v-navigation-drawer
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -219,7 +222,7 @@
         drawer: false,
         dialog: false,
         fixed: false,
-        fonPage: true,
+        fonPage: false,
         links: [
           'поддержать проект'
         ],
@@ -245,11 +248,8 @@
           var v = this;
           setTimeout(function () {
             v.fonPage = false;
-        }, 7000);
+        }, 4000);
       }
-    },
-    mounted() {
-      this.sayHi()
     }
   }
 </script>
