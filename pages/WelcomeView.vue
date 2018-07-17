@@ -61,17 +61,17 @@
         flex: 12 },
         { title: 'исповедаться',
         src: '/static/7.jpeg',
-        to: '/хочу_креститься',
+        to: '/хочу_исповедаться',
         textColor: 'subheading font-weight-medium red--text',
         flex: 6 },
         { title: 'боюсь исповеди',
         src: '/static/6.jpeg',
-        to: '/хочу_креститься',
+        to: '/боюсь_исповеди',
         textColor: 'subheading font-weight-medium white--text',
         flex: 6 },
         { title: 'неправильная исповедь',
         src: '/static/5.jpeg',
-        to: '/хочу_креститься',
+        to: '/ошибки_на_исповеди',
         textColor: 'subheading font-weight-medium white--text',
         flex: 12 }
       ],
@@ -96,11 +96,5 @@
   .shadow {
     text-shadow: 3px 1px 1px rgba(37, 7, 7, 1);
   }
-  
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity 3s;
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
+
 </style>

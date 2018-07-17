@@ -1,44 +1,26 @@
 <template>
-<v-card>
-      <v-container
-        fluid
-        grid-list-lg
-      >
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card color="blue-grey darken-2" class="white--text">
-              <v-card-title primary-title>
-                <div class="headline">Unlimited music now</div>
-                <div>Listen to your favorite artists and albums whenever and wherever, online and offline.</div>
-              </v-card-title>
-              <v-card-actions>
-                <v-btn flat dark>Listen now</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-flex>
-
-          <v-flex xs12>
-            <v-card color="purple" class="white--text">
-              <v-container fluid grid-list-lg>
-                <v-layout row>
-                  <v-flex xs7>
-                    <div>
-                      <div class="headline">Halycon Days</div>
-                      <div>Ellie Goulding</div>
-                    </div>
-                  </v-flex>
-                  <v-flex xs5>
-                    <v-card-media
-                      src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
-                      height="125px"
-                      contain
-                    ></v-card-media>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card>
+  <v-parallax
+    dark
+    src="/static/4.jpg"
+  >
+    <v-layout align-start justify-start column fill-height>
+      <h4 class="title text-sm-left mt-5 mb-3 shadow">Крещение детей</h4>
+        <p class="caption text-sm-left">Для крещения прежде всего требуется вера.</p>
+        <p class="caption text-sm-left">Если человек веру свою подтвердить не может, то это за него делает кто-то другой.</p>
+        <p class="caption text-sm-left">Поэтому крещение детей, которые не могут нам ничего о своей вере рассказать, происходит по вере их родителей и крестных.</p>
+        <p class="caption text-sm-left">Итак, чтобы крестить ребенка необходимо чтобы верили и родители и нашлись бы крестные.</p>
+    </v-layout>
+  </v-parallax>
 </template>
+
+<style scoped>
+  
+  .shadow {
+    text-shadow: 3px 1px 1px rgba(37, 7, 7, 1);
+  }
+
+  p {
+    text-shadow: 3px 1px 1px rgba(37, 7, 7, 1);
+  }
+
+</style>
