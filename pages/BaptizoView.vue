@@ -1,28 +1,21 @@
 <template>
-  <v-jumbotron
-    :gradient="gradient"
+  <v-parallax
     dark
-    src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
+    src="/static/cross.jpeg"
   >
-    <v-container fill-height>
-      <v-layout align-center>
-        <v-flex>
-          <v-card-text>
-            <h4 class="title text-sm-left">Крещение детей</h4>
+    <v-layout align-start justify-start column fill-height>
+      <h4 class="title text-sm-left mt-5 mb-3">Крещение детей</h4>
             <p class="caption text-sm-left mt-3">Для крещения прежде всего требуется вера.</p>
             <p class="caption text-sm-left">Если человек веру свою подтвердить не может, то это за него делает кто-то другой.</p>
             <p class="caption text-sm-left">Поэтому крещение детей, которые не могут нам ничего о своей вере рассказать, происходит по вере их родителей и крестных.</p>
-          </v-card-text>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-jumbotron>
-</template>
-
-<script>
-  export default {
-    data: () => ({
-      gradient: 'to top right, rgba(63,81,181, .7), rgba(25,32,72, .7)'
-    })
-  }
-</script>
+            <p class="caption text-sm-left mt-3">Для крещения прежде всего требуется вера.</p>
+            <p class="caption text-sm-left">Если человек веру свою подтвердить не может, то это за него делает кто-то другой.</p>
+            <p class="caption text-sm-left">Поэтому крещение детей, которые не могут нам ничего о своей вере рассказать, происходит по вере их родителей и крестных.</p>
+            <p class="caption text-sm-left mt-3">Для крещения прежде всего требуется вера.</p>
+            <p class="caption text-sm-left">Если человек веру свою подтвердить не может, то это за него делает кто-то другой.</p>
+            <p class="caption text-sm-left">Поэтому крещение детей, которые не могут нам ничего о своей вере рассказать, происходит по вере их родителей и крестных.</p>
+            <p class="caption text-sm-left mt-3">Для крещения прежде всего требуется вера.</p>
+            <p class="caption text-sm-left">Если человек веру свою подтвердить не может, то это за него делает кто-то другой.</p>
+            
+    </v-layout>
+  </v-parallax>
