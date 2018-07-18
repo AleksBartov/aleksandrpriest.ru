@@ -2,7 +2,7 @@
 
 <div class="mt-0">
       <section>
-        <v-parallax src="/static/loadingSmall.jpeg" height="600">
+        <v-parallax src="/static/priest_for.jpg" height="500">
           <v-layout
             column
             align-center
