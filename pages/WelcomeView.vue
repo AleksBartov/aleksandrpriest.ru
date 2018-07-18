@@ -12,7 +12,42 @@
             <h1 class="white--text mb-2 display-1 text-xs-center shadow">Дорогой друг!</h1>
             <div class="subheading mb-3 shadow text-xs-center">Приветствую тебя на своем сайте</div>
             <div class="subheading mb-3 text-xs-center shadow">Здесь я стараюсь разьяснять церковную жизнь, а в особенности богослужебную ее сторону</div>
-            <div class="subheading mb-3 text-xs-center shadow" >Задавай свои вопросы <v-btn outline class="noShadow" color="indigo lighten-1" router :to="cards[0].to">здесь</v-btn></div>
+            <div class="subheading mb-3 text-xs-center shadow" >Задавай свои вопросы 
+            
+            <v-dialog v-model="dialog" persistent max-width="500px">
+              <v-btn slot="activator" outline class="noShadow" color="indigo lighten-1">здесь</v-btn>
+              <v-card>
+                <v-card-title>
+                  <span class="headline">Задать вопрос</span>
+                </v-card-title>
+                <v-card-text>
+                  <v-container grid-list-md>
+                    <v-layout wrap>
+                      <v-flex xs12 sm6 md4>
+                        <v-text-field label="Ваше имя" required></v-text-field>
+                      </v-flex>
+                      <v-flex xs12>
+                        <v-text-field label="Ваша электронная почта" type="email" required></v-text-field>
+                      </v-flex>
+                      <v-flex xs12>
+                        <v-textarea
+                          outline
+                          name="input-7-4"
+                          label="Здесь введите ваш вопрос"
+                          value=""
+                        ></v-textarea>
+                      </v-flex>
+                    </v-layout>
+                  </v-container>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="blue darken-1" flat @click.native="dialog = false">Отмена</v-btn>
+                  <v-btn color="blue darken-1" flat @click.native="dialog = false">Задать</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+    </div>
           </v-layout>
         </v-parallax>
       </section>
@@ -96,7 +131,7 @@
         textColor: 'subheading font-weight-medium white--text',
         flex: 12 }
       ],
-      vision: false     
+      dialog: false     
     }),
     methods:{
         toShowLinks() {
