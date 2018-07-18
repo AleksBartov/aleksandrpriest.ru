@@ -1,43 +1,64 @@
 <template>
-  <v-layout>
-  <v-flex xs12 sm8 offset-sm2>
-       <v-card>
-        <v-container
-          fluid
-          grid-list-md
-        >
-          <v-layout row wrap>
-            <v-flex
-              v-for="card in cards"
-              v-bind="{ [`xs${card.flex}`]: true }"
-              :key="card.title"
-            >
-              <transition name="fade">
-                <v-card router :to="card.to" v-ripple>
-                  <v-card-media
-                    :src="card.src"
-                    height="120px"
-                  >
-                    <v-container
-                      fill-height
-                      fluid
-                      pa-2
-                    >
-                      <v-layout fill-height>
-                        <v-flex>
-                          <h2 class="font-weight-medium white--text shadow">{{ card.title }}</h2>
-                        </v-flex>
-                      </v-layout>
-                    </v-container>
-                  </v-card-media>
-                </v-card>
-              </transition>
-            </v-flex>
+
+<div class="mt-0">
+      <section>
+        <v-parallax src="/static/loadingSmall.jpeg" height="600">
+          <v-layout
+            column
+            align-center
+            justify-center
+            class="white--text"
+          >
+            <h1 class="white--text mb-2 display-1 text-xs-center shadow">Дорогой друг!</h1>
+            <div class="subheading mb-3 shadow text-xs-center">Приветствую тебя на своем сайте</div>
+            <div class="subheading mb-3 text-xs-center shadow">Здесь я стараюсь разьяснять церковную жизнь, а в особенности богослужебную ее сторону</div>
+            <div class="subheading mb-3 text-xs-center shadow" >Задавай свои вопросы <v-btn outline class="noShadow" color="indigo lighten-1" router :to="cards[0].to">здесь</v-btn></div>
           </v-layout>
-        </v-container>
-      </v-card>
-    </v-flex>
-  </v-layout>
+        </v-parallax>
+      </section>
+
+      <section>
+        <v-layout>
+        <v-flex xs12 sm8 offset-sm2>
+            <v-card>
+              <v-container
+                fluid
+                grid-list-md
+              >
+                <v-layout row wrap>
+                  <v-flex
+                    v-for="card in cards"
+                    v-bind="{ [`xs${card.flex}`]: true }"
+                    :key="card.title"
+                  >
+                    <transition name="fade">
+                      <v-card router :to="card.to" v-ripple>
+                        <v-card-media
+                          :src="card.src"
+                          height="120px"
+                        >
+                          <v-container
+                            fill-height
+                            fluid
+                            pa-2
+                          >
+                            <v-layout fill-height>
+                              <v-flex>
+                                <h2 class="font-weight-medium white--text shadow">{{ card.title }}</h2>
+                              </v-flex>
+                            </v-layout>
+                          </v-container>
+                        </v-card-media>
+                      </v-card>
+                    </transition>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </section>
+    </div>
 </template>
 
 <script>
@@ -95,6 +116,10 @@
   
   .shadow {
     text-shadow: 3px 1px 1px rgba(37, 7, 7, 1);
+  }
+
+  .noShadow {
+    text-shadow: none;
   }
 
 </style>
