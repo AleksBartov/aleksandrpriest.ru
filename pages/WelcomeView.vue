@@ -10,12 +10,12 @@
             class="white--text"
           >
             <h1 class="white--text mb-2 display-1 text-xs-center shadow">Дорогой друг!</h1>
-            <div class="subheading mb-3 shadow text-xs-center">Приветствую тебя на своем сайте</div>
-            <div class="subheading mb-3 text-xs-center shadow">Здесь я стараюсь разьяснять церковную жизнь, а в особенности богослужебную ее сторону</div>
-            <div class="subheading mb-3 text-xs-center shadow" >Задавай свои вопросы 
+            <div class="subheading mb-3 text-xs-center indigo--text">Приветствую тебя на своем сайте</div>
+            <div class="subheading mb-3 text-xs-center indigo--text">Здесь я стараюсь разьяснять церковную жизнь, а в особенности богослужебную ее сторону</div>
+            <div class="subheading mb-3 text-xs-center indigo--text" >Задавай свои вопросы 
             
             <v-dialog v-model="dialog" persistent max-width="500px">
-              <v-btn slot="activator" outline class="noShadow" color="indigo lighten-1">здесь</v-btn>
+              <v-btn slot="activator" outline color="indigo lighten-1">здесь</v-btn>
               <v-card>
                 <v-card-title>
                   <span class="headline">Задать вопрос</span>
@@ -23,17 +23,18 @@
                 <v-card-text>
                   <v-container grid-list-md>
                     <v-layout wrap>
-                      <v-flex xs12 sm6 md4>
+                      <v-flex xs12 >
                         <v-text-field label="Ваше имя" required></v-text-field>
                       </v-flex>
                       <v-flex xs12>
-                        <v-text-field label="Ваша электронная почта" type="email" required></v-text-field>
+                        <v-text-field class="mt-0" label="Ваш e-mail" type="email" required></v-text-field>
                       </v-flex>
                       <v-flex xs12>
                         <v-textarea
                           outline
+                          height="100px"
                           name="input-7-4"
-                          label="Здесь введите ваш вопрос"
+                          label="Ваш вопрос"
                           value=""
                         ></v-textarea>
                       </v-flex>
@@ -47,7 +48,7 @@
                 </v-card-actions>
               </v-card>
             </v-dialog>
-    </div>
+            </div>
           </v-layout>
         </v-parallax>
       </section>
