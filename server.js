@@ -74,7 +74,7 @@ app.get('/sitemap.xml', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  res.send(`${req.body.имя}, ваш вопрос успешно отправлен`);
+  res.send(`${req.body.name}, ваш вопрос успешно отправлен`);
 });
 
 // 301 redirect for changed routes

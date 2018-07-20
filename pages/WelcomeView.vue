@@ -14,35 +14,51 @@
             <div class="subheading mb-3 text-xs-center indigo--text">Здесь я стараюсь разьяснять церковную жизнь, а в особенности богослужебную ее сторону</div>
             <div class="subheading mb-3 text-xs-center indigo--text" >Задавай свои вопросы 
             
-            <v-dialog v-model="dialog" persistent max-width="500px">
+            <v-dialog v-model="dialog" persistent width="100vw">
               <v-btn slot="activator" outline color="indigo lighten-1">здесь</v-btn>
               
-              <v-container fluid fill-height>
-                <v-layout align-center justify-center>
-                  <v-flex xs12 sm12 md8>
-                    <v-card class="elevation-24">
-                      <v-toolbar color="indigo lighten-4">
-                        <v-toolbar-title>Задать вопрос</v-toolbar-title>
-                      </v-toolbar>
-                      <v-card-text>
-                        <v-form>
-                          <v-text-field id="name" prepend-icon="person" v-model="имя" name="имя" label="Ваше имя" type="text"></v-text-field>
-                          <v-text-field prepend-icon="email" v-model="email" name="email" label="Ваш e-mail" type="email"></v-text-field>
-                          <v-textarea
-                            outline
-                            height="100px"
-                            name="input-7-4"
-                            label="Ваш вопрос"
-                            value=""
-                          ></v-textarea>
-                        </v-form>
-                      </v-card-text>
-                      <v-card-actions >
-                        <v-btn color="indigo lighten-4" dark @click.native="dialog = false">Отмена</v-btn>
-                        <v-spacer></v-spacer>
-                        <v-btn color="indigo lighten-4" @click="sendingData">Задать</v-btn>
-                      </v-card-actions>
-                    </v-card>
+
+            <v-form ref="form" v-model="valid" lazy-validation class="indigo lighten-4 pa-4">
+                <v-text-field
+                  v-model="name"
+                  :rules="nameRules"
+                  :counter="10"
+                  label="Ваше имя"
+                  required
+                ></v-text-field>
+                <v-text-field
+                  v-model="email"
+                  :rules="emailRules"
+                  label="Ваш e-mail"
+                  required
+                ></v-text-field>
+                <v-textarea
+                  outline
+                  class="pt-3 pb-3"
+                  v-model="textarea"
+                  height="100px"
+                  name="input-7-4"
+                  :rules="textareaRules"
+                  label="Ваш вопрос"
+                  value=""
+                ></v-textarea>
+
+              <v-layout row >
+                <v-btn
+                  :disabled="!valid"
+                  @click="submit"
+                  small
+                  color="success"
+                  class="ma-0"
+                >
+                  задать
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn @click="clear" small class="ma-0" color="warning">очистить</v-btn>
+                <v-spacer></v-spacer>
+                <v-btn @click="dialog = false" small class="ma-0" color="error">отмена</v-btn>
+              </v-layout>
+              </v-form>
                     <v-snackbar
                       :timeout="timeout"
                       :color="color"
@@ -53,9 +69,6 @@
                       {{ text }}
                       <v-btn dark flat @click.native="snackbar = false">закрыть</v-btn>
                     </v-snackbar>
-                  </v-flex>
-                </v-layout>
-              </v-container>
             </v-dialog>
             </div>
           </v-layout>
@@ -144,37 +157,57 @@
         flex: 12 }
       ],
       dialog: false,
-      email: null,
-      имя: null,
       snackbar: false,
       color: null,
       mode: 'multi-line',
       timeout: 2000,
-      text: null     
+      text: null,
+      valid: true,
+      name: '',
+      nameRules: [
+        v => !!v || 'Необходимо ввести имя',
+        v => (v && v.length <= 10) || 'Имя не может быть более 10 символов'
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'Необходимо ввести e-mail',
+        v => /.+@.+/.test(v) || 'E-mail должен быть корректный'
+      ],
+      textarea: '',
+      textareaRules: [
+        v => !!v || 'Необходимо ввести вопрос'
+      ] 
     }),
     methods: {
-      sendingData () {
-        axios.post('/', {
-          имя: this.имя,
-          email: this.email
-        })
-        .then(response => {
-          this.text = response.data;
-          this.color = 'success';
-          this.toClose();
-        })
-        .catch(error => {
-          this.text = error.response.data;
-          this.color = 'error';
-        });
-        this.snackbar = true;
-        return this.text, this.color;        
-      },
       toClose(){
           var v = this;
           setTimeout(function () {
               v.dialog = false;
           }, 2500);
+      },
+      submit () {
+        if (this.$refs.form.validate()) {
+          // Native form submission is not yet supported
+          axios.post('/', {
+            name: this.name,
+            email: this.email,
+            textarea: this.textarea
+          })
+          .then(response => {
+            this.text = response.data;
+            this.color = 'success';
+            this.toClose();
+          })
+          .catch(error => {
+            this.text = error.response.data;
+            this.color = 'error';
+          });
+          this.snackbar = true;
+          return this.text, this.color;
+        }
+      },
+      clear () {
+        this.$refs.form.reset()
       }
     }
   }
