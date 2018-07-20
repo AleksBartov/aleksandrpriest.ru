@@ -16,37 +16,46 @@
             
             <v-dialog v-model="dialog" persistent max-width="500px">
               <v-btn slot="activator" outline color="indigo lighten-1">здесь</v-btn>
-              <v-card>
-                <v-card-title>
-                  <span class="headline">Задать вопрос</span>
-                </v-card-title>
-                <v-card-text>
-                  <v-container grid-list-md>
-                    <v-layout wrap>
-                      <v-flex xs12 >
-                        <v-text-field label="Ваше имя" required></v-text-field>
-                      </v-flex>
-                      <v-flex xs12>
-                        <v-text-field class="mt-0" label="Ваш e-mail" type="email" required></v-text-field>
-                      </v-flex>
-                      <v-flex xs12>
-                        <v-textarea
-                          outline
-                          height="100px"
-                          name="input-7-4"
-                          label="Ваш вопрос"
-                          value=""
-                        ></v-textarea>
-                      </v-flex>
-                    </v-layout>
-                  </v-container>
-                </v-card-text>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="blue darken-1" flat @click.native="dialog = false">Отмена</v-btn>
-                  <v-btn color="blue darken-1" flat @click.native="dialog = false">Задать</v-btn>
-                </v-card-actions>
-              </v-card>
+              
+              <v-container fluid fill-height>
+                <v-layout align-center justify-center>
+                  <v-flex xs12 sm12 md8>
+                    <v-card class="elevation-24">
+                      <v-toolbar color="indigo lighten-4">
+                        <v-toolbar-title>Задать вопрос</v-toolbar-title>
+                      </v-toolbar>
+                      <v-card-text>
+                        <v-form>
+                          <v-text-field id="name" prepend-icon="person" v-model="имя" name="имя" label="Ваше имя" type="text"></v-text-field>
+                          <v-text-field prepend-icon="email" v-model="email" name="email" label="Ваш e-mail" type="email"></v-text-field>
+                          <v-textarea
+                            outline
+                            height="100px"
+                            name="input-7-4"
+                            label="Ваш вопрос"
+                            value=""
+                          ></v-textarea>
+                        </v-form>
+                      </v-card-text>
+                      <v-card-actions >
+                        <v-btn color="indigo lighten-4" dark @click.native="dialog = false">Отмена</v-btn>
+                        <v-spacer></v-spacer>
+                        <v-btn color="indigo lighten-4" @click="sendingData">Задать</v-btn>
+                      </v-card-actions>
+                    </v-card>
+                    <v-snackbar
+                      :timeout="timeout"
+                      :color="color"
+                      :multi-line="mode"
+                      top
+                      v-model="snackbar"
+                    >
+                      {{ text }}
+                      <v-btn dark flat @click.native="snackbar = false">закрыть</v-btn>
+                    </v-snackbar>
+                  </v-flex>
+                </v-layout>
+              </v-container>
             </v-dialog>
             </div>
           </v-layout>
@@ -98,6 +107,8 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     data: () => ({
       cards: [
@@ -132,19 +143,40 @@
         textColor: 'subheading font-weight-medium white--text',
         flex: 12 }
       ],
-      dialog: false     
+      dialog: false,
+      email: null,
+      имя: null,
+      snackbar: false,
+      color: null,
+      mode: 'multi-line',
+      timeout: 2000,
+      text: null     
     }),
-    methods:{
-        toShowLinks() {
+    methods: {
+      sendingData () {
+        axios.post('/', {
+          имя: this.имя,
+          email: this.email
+        })
+        .then(response => {
+          this.text = response.data;
+          this.color = 'success';
+          this.toClose();
+        })
+        .catch(error => {
+          this.text = error.response.data;
+          this.color = 'error';
+        });
+        this.snackbar = true;
+        return this.text, this.color;        
+      },
+      toClose(){
           var v = this;
           setTimeout(function () {
-              v.vision = true;
-          }, 1000);
+              v.dialog = false;
+          }, 2500);
       }
-    },
-    mounted() {
-      this.toShowLinks()
-    }   
+    }
   }
 </script>
 

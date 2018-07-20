@@ -1,6 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 const LRU = require('lru-cache')
+const _ = require('lodash')
+const bodyParser = require('body-parser')
+const bcrypt = require('bcrypt')
+const Joi = require('joi')
+const mongoose = require('mongoose')
 const express = require('express')
 const favicon = require('serve-favicon')
 const compression = require('compression')
@@ -59,7 +64,7 @@ if (isProd) {
 const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0
 })
-
+app.use(bodyParser.json())
 app.use(compression({ threshold: 0 }))
 app.use(cors())
 app.use(favicon('./static/favicon.ico'))
@@ -71,6 +76,10 @@ app.get('/sitemap.xml', (req, res) => {
   res.setHeader("Content-Type", "text/xml")
   res.sendFile(resolve('./static/sitemap.xml'))
 })
+
+app.post('/', (req, res) => {
+  res.send(`${req.body.имя}, ваш вопрос успешно отправлен`);
+});
 
 // 301 redirect for changed routes
 Object.keys(redirects).forEach(k => {
