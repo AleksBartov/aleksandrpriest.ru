@@ -34,30 +34,28 @@
                 ></v-text-field>
                 <v-textarea
                   outline
-                  class="pt-3 pb-3"
+                  class="pt-3 pb-0"
                   v-model="textarea"
-                  height="100px"
+                  height="150px"
                   name="input-7-4"
                   :rules="textareaRules"
                   label="Ваш вопрос"
                   value=""
                 ></v-textarea>
-
-              <v-layout row >
+              <v-layout column >
+                <v-layout row >
+                  <v-btn @click="clear" class="mb-2" color="warning">очистить</v-btn>
+                  <v-spacer></v-spacer>
+                  <v-btn @click="dialog = false" class="mb-2" color="error">отмена</v-btn>
+                </v-layout>
                 <v-btn
-                  :disabled="!valid"
-                  @click="submit"
-                  small
-                  color="success"
-                  class="ma-0"
-                >
-                  задать
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn @click="clear" small class="ma-0" color="warning">очистить</v-btn>
-                <v-spacer></v-spacer>
-                <v-btn @click="dialog = false" small class="ma-0" color="error">отмена</v-btn>
-              </v-layout>
+                    :disabled="!valid"
+                    @click="submit"
+                    color="success"
+                  >
+                    задать
+                  </v-btn>
+                </v-layout>
               </v-form>
                     <v-snackbar
                       :timeout="timeout"
