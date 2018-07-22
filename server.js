@@ -6,6 +6,8 @@ const express = require('express')
 const favicon = require('serve-favicon')
 const compression = require('compression')
 const cors = require('cors')
+const mongoose = require('mongoose')
+const _ = require('lodash')
 const resolve = file => path.resolve(__dirname, file)
 const { createBundleRenderer } = require('vue-server-renderer')
 const redirects = require('./router/301.json')
@@ -60,6 +62,14 @@ if (isProd) {
 const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0
 })
+
+mongoose
+    .connect('mongodb://AleksBartov:Merahba2018@ds259410.mlab.com:59410/progect_x')
+    .then(() => {
+        console.log('connected to MongoDB...')
+      })
+    .catch((err) => console.log(err));
+
 app.use(bodyParser.json())
 app.use(compression({ threshold: 0 }))
 app.use(cors())
@@ -73,8 +83,28 @@ app.get('/sitemap.xml', (req, res) => {
   res.sendFile(resolve('./static/sitemap.xml'))
 })
 
-app.post('/', (req, res) => {
-  res.send(`${req.body.name}, ваш вопрос успешно отправлен`);
+app.post('/', async (req, res) => {
+
+      const questionSchema = new mongoose.Schema({
+        name: {
+            type: String,
+            required: true,
+            maxlength: 10
+        },
+        email: {
+            type: String,
+            required: true,
+            maxlength: 255
+        },
+        textarea: {
+            type: String,
+            required: true
+        }
+    });
+    const Question = mongoose.model('Question', questionSchema);
+    const question = new Question(_.pick(req.body, ['name', 'email', 'textarea']));
+    await question.save();
+    res.send(`${req.body.name}, ваш вопрос успешно отправлен`);
 });
 
 // 301 redirect for changed routes
