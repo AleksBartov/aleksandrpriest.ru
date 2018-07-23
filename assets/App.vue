@@ -75,6 +75,15 @@
           </v-list-tile>
         </v-list-group>
       </v-list-group>
+
+      <v-list-tile router :to="questions">
+        <v-list-tile-action>
+          <v-btn icon>
+            <Cup />
+          </v-btn>
+        </v-list-tile-action>
+        <v-list-tile-title >Задать вопрос</v-list-tile-title>
+      </v-list-tile>
     </v-list>
       
       <v-divider></v-divider>
@@ -227,6 +236,7 @@
           'поддержать проект'
         ],
         home: '/',
+        questions: '/вопрос_ответ',
         baptizes: [
           ['Хочу крестить ребенка', 'more_horiz', '/хочу_крестить_ребенка'],
           ['Просят быть крестным', 'more_horiz', '/просят_быть_крестным'],

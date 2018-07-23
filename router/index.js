@@ -23,6 +23,7 @@ export function createRouter () {
       scrollBehavior: () => ({ y: 0 }),
       routes: [
         route('/', 'Welcome'),
+        route('/вопрос_ответ', 'Question'),
         route('/хочу_крестить_ребенка', 'Baptizo'),
         route('/просят_быть_крестным', 'AskToBeGodfather'),
         route('/хочу_креститься', 'WantToBaptizo'),

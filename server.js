@@ -7,7 +7,7 @@ const favicon = require('serve-favicon')
 const compression = require('compression')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const _ = require('lodash')
+const questions = require('./routes/questions')
 const resolve = file => path.resolve(__dirname, file)
 const { createBundleRenderer } = require('vue-server-renderer')
 const redirects = require('./router/301.json')
@@ -63,12 +63,6 @@ const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 60 * 60 * 24 * 30 : 0
 })
 
-mongoose
-    .connect('mongodb://AleksBartov:Merahba2018@ds259410.mlab.com:59410/progect_x')
-    .then(() => {
-        console.log('connected to MongoDB...')
-      })
-    .catch((err) => console.log(err));
 
 app.use(bodyParser.json())
 app.use(compression({ threshold: 0 }))
@@ -77,29 +71,13 @@ app.use(favicon('./static/favicon.ico'))
 app.use('/static', serve('./static', true))
 app.use('/public', serve('./public', true))
 app.use('/static/robots.txt', serve('./robots.txt'))
+app.use('/question_answer', questions)
 
 app.get('/sitemap.xml', (req, res) => {
   res.setHeader("Content-Type", "text/xml")
   res.sendFile(resolve('./static/sitemap.xml'))
 })
 
-app.post('/', async (req, res) => {
-      const questionSchema = new mongoose.Schema({
-        name: {
-            type: String
-        },
-        email: {
-            type: String
-        },
-        textarea: {
-            type: String
-        }
-    });
-    const Question = mongoose.model('Question', questionSchema);
-    const question = new Question(_.pick(req.body, ['name', 'email', 'textarea']));
-    await question.save();
-    res.send(`${req.body.name}, ваш вопрос успешно отправлен`);
-});
 
 // 301 redirect for changed routes
 Object.keys(redirects).forEach(k => {
@@ -170,6 +148,14 @@ app.get('*', isProd ? render : (req, res) => {
 })
 
 const port = process.env.PORT || 80
-app.listen(port, '0.0.0.0', () => {
-  console.log(`server started at localhost:${port}`)
-})
+mongoose
+    .connect('mongodb://AleksBartov:Merahba2018@ds259410.mlab.com:59410/progect_x')
+    .then(() => {
+      app.listen(port, '0.0.0.0', () => {
+        console.log(`server started at localhost:${port}`)
+        console.log('connected to MongoDB...')
+        console.log(process.env.NODE_ENV)
+      })
+    })
+    .catch((err) => console.log(err));
+
