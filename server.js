@@ -84,21 +84,15 @@ app.get('/sitemap.xml', (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-
       const questionSchema = new mongoose.Schema({
         name: {
-            type: String,
-            required: true,
-            maxlength: 10
+            type: String
         },
         email: {
-            type: String,
-            required: true,
-            maxlength: 255
+            type: String
         },
         textarea: {
-            type: String,
-            required: true
+            type: String
         }
     });
     const Question = mongoose.model('Question', questionSchema);
